@@ -17,7 +17,7 @@
   text-align: center;
   padding: 10px 50px;
   text-decoration: none;
-  border: 1px solid #161515;
+  border: 1px solid #9b9b9b;
 }
 
 .link:hover {
@@ -32,7 +32,7 @@
   text-align: center;
   padding: 15px 20px;
   text-decoration: none;
-  border: 1px solid #161515;
+  border: 1px solid #9b9b9b;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -52,6 +52,6 @@
   text-align: center;
   padding: 15px 20px;
   text-decoration: none;
-  border: 1px solid #161515;
+  border: 1px solid #9b9b9b;
   font-family: 'Poppins', sans-serif;
 }
