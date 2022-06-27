@@ -1,58 +1,31 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap'); */
-
-body {
-  background-color: #e0d6d6;
-  color: #262b37;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: normal;
-  font-family: 'Roboto', sans-serif;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  display: inline;
-  margin-right: 4px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.header {
-  margin-top: 40px;
+.container {
   text-align: center;
-  font-size: 2rem;
+  background: #dff3be;
+  color: #316ba9;
+  padding: 5px 20px;
+  border-radius: 20px;
+  margin-top: 200px;
+  box-shadow: 4px 4px 14px rgb(0, 0, 0, 50%);
 }
 
-.menu {
-  background: #e0d6d6;
-  color: #262b37;
-  width: 600px;
-  border: black 2px solid;
-  margin-right: 10px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-around;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+.container h1 {
+  font-size: 1.5em;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.container h3 {
+  padding: 0 10px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .backLink {
-  background: #aaa8a8;
+  background: #b9e4c1;
   border: 1px solid;
-  color: rgb(4, 4, 4);
-  padding: 15px 20px;
+  color: #316ba9;
+  padding: 2px 5px;
   text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
 }

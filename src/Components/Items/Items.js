@@ -1,34 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import styles from './StylesItems.module.css';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const Items = () => {
+const Items = ({ addItemToCart, removeItemFromCart }) => {
   const [item, setItem] = useState({});
   const { id } = useParams();
+
+  const [countItem, setCountItem] = useState(0);
+
+  const incCount = () => {
+    setCountItem(countItem + 1);
+  };
+
+  const decCount = () => {
+    if (countItem > 0) {
+      setCountItem(countItem - 1);
+    } else {
+      setCountItem(0);
+    }
+  };
 
   useEffect(() => {
     fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
       .then((response) => response.json())
       .then((item) => {
-        console.log(item);
         setItem(item);
       });
   }, [id]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <ul>
-        <li className={styles.items} key={item.id}>
+        <li className={styles.item} key={item.id}>
           {item.images && item.images[0] && (
-            <img alt='#' src={item.images[0]} />
+            <img className={styles.img} alt='#' src={item.images[0]} />
           )}
-          {item.title} {item.price} {item.description}
+          <div className={styles.despriptItem}>
+            <h3 className={styles.title}>{item.title}</h3>
+            <div className={styles.price}>{item.price}$</div>
+            <div className={styles.description}>{item.description}</div>
+
+            <button onClick={incCount}>+</button>
+            <button
+              onClick={() => {
+                addItemToCart(item, countItem);
+              }}
+            >
+              Add to cart: {countItem}
+            </button>
+            <button onClick={decCount}>-</button>
+          </div>
         </li>
       </ul>
-
-      <Link className={styles.backLink} to='/index'>
-        Back
-      </Link>
     </div>
   );
 };

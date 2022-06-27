@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const AboutStore = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <h1 className={styles.header}>About Our Store</h1>
 
-      <h3>This is the best store ever, created by shevvss</h3>
+      <h3>This is the best store ever! Created by shevvss</h3>
 
       <Link className={styles.backLink} to='/index'>
         Back

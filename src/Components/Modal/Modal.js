@@ -18,6 +18,7 @@ const Modal = ({ show, close, title, message, children }) => {
               </button>
             </header>
             <main className={styles.modal_content}>{children}</main>
+
             {/* <footer className={styles.modal_footer}>
               <button className={styles.close} onClick={() => close()}>
                 Cancel

@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './StylesForm.module.css';
 import Input from '../Components/Input/Input';
 
-const Form = ({ close }) => {
+const Form = ({ close, logIn }) => {
+  const [error, setError] = useState(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log({ userState });
+    if (
+      event.target.userName.value === 'admin' &&
+      event.target.password.value === '1234'
+    ) {
+      logIn();
+      setError(null);
+    } else {
+      setError('!!  login or password incorrect');
+    }
   };
 
   return (
@@ -15,7 +25,7 @@ const Form = ({ close }) => {
         labelFor='login'
         type='text'
         id='userName'
-        placeholder='Enter your login'
+        placeholder='admin'
       />
 
       <Input
@@ -23,8 +33,10 @@ const Form = ({ close }) => {
         labelFor='password'
         type='password'
         id='password'
-        placeholder='Enter your password'
+        placeholder='1234'
       />
+
+      <p>{error}</p>
 
       <div>
         <button className={styles.btn} onClick={() => close()} type='button'>

@@ -24,8 +24,8 @@
   color: rgb(75, 68, 162);
 }
 
-button {
-  background: rgb(197, 238, 208);
+.btnLog {
+  background: rgb(137 131 183);
   float: right;
   display: block;
   color: #161515;
@@ -40,6 +40,18 @@ button {
   background: rgb(239 255 175);
 }
 
-.login {
+.log {
   background: rgb(137 131 183);
+}
+
+.cart {
+  background: rgb(197, 238, 208);
+  float: right;
+  display: block;
+  color: #161515;
+  text-align: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  border: 1px solid #161515;
+  font-family: 'Poppins', sans-serif;
 }

@@ -1,54 +1,65 @@
-body {
-  background-color: #e0d6d6;
-  color: #262b37;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: normal;
-  font-family: 'Roboto', sans-serif;
-}
-
-ul {
+.container ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 20px 20px;
+  padding: 0 20px;
 }
 
-li {
+.item {
+  display: inline-block;
+  width: 500px;
+  text-align: center;
+  margin-top: 50px;
+  background: #fafafa;
+  font-family: 'Open Sans';
+  border: 2px solid white;
+  transition: 0.3s ease-in;
+}
+
+.item:hover {
+  border: 2px solid rgb(56, 48, 146);
+}
+
+.item img {
   display: block;
-  margin-right: 4px;
+  width: 100%;
 }
 
-a {
+.despriptItem {
+  background: #fafafa;
+  padding: 15px 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #444444;
+  margin: 0 0 10px 0;
+}
+
+.price {
+  font-size: 16px;
+  color: #444444;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.despriptItem {
+  display: block;
+  text-align: center;
+}
+
+.bttn {
   text-decoration: none;
+  display: inline-block;
+  padding: 0 10px;
+  background: #cccccc;
+  color: white;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 28px;
+  transition: 0.3s ease-in;
 }
 
-.menu {
-  background: #e0d6d6;
-  color: #262b37;
-  width: 600px;
-  border: black 2px solid;
-  margin-right: 10px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-around;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.items {
-  margin-top: 40px;
-}
-
-.backLink {
-  background: #aaa8a8;
-  border: 1px solid;
-  color: rgb(4, 4, 4);
-  padding: 1px 20px;
-  text-decoration: none;
+.item:hover .bttn {
+  background: rgb(56, 48, 146);
 }

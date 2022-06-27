@@ -1,7 +1,9 @@
 body {
+  max-width: 750px;
+  margin: auto;
+  padding-top: 20px;
   font-family: 'Poppins', sans-serif;
-  background-image: url(./trianglify.png);
+  background-image: url(/Users/marina/Documents/React/train/public/trianglify.png);
   background-size: cover;
   background-attachment: fixed;
-  margin: 40px;
 }
