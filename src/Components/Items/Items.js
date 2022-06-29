@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 const Items = () => {
   const dispatch = useDispatch();
 
-  const addItem = (item, countItem) => {
+  const addItem = (item, countItem = 1) => {
     dispatch({ type: 'addItem', payload: { item: item, count: countItem } });
   };
 

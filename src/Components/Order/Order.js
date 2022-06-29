@@ -8,10 +8,12 @@ const Order = () => {
   return (
     <div>
       <img src={Basket} style={{ width: '14px' }} alt='close' />
-      &nbsp;{cart.length} |&nbsp;
-      {cart.reduce((prev, item) => {
-        return prev + item.price;
-      }, 0)}
+      &nbsp; {cart.reduce((prev_val, item) => (prev_val += item.count), 0)}{' '}
+      |&nbsp;
+      {cart.reduce(
+        (prev_val, item) => (prev_val += item.price * item.count),
+        0
+      )}
       $
     </div>
   );
