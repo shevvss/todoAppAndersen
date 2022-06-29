@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './StylesHomepage.module.css';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const Homepage = ({ loggedIn, addItemToCart }) => {
+const Homepage = ({ loggedIn }) => {
   const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products?offset=10&limit=10')
@@ -12,6 +14,10 @@ const Homepage = ({ loggedIn, addItemToCart }) => {
         setItems(items);
       });
   }, []);
+
+  const addItem = (item) => {
+    dispatch({ type: 'addItem', payload: { item: item, count: 1 } });
+  };
 
   return (
     <div>
@@ -34,7 +40,7 @@ const Homepage = ({ loggedIn, addItemToCart }) => {
                     <button
                       className={styles.bttn}
                       onClick={() => {
-                        addItemToCart(item);
+                        addItem(item);
                       }}
                     >
                       Add to cart

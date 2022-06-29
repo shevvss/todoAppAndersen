@@ -26,9 +26,9 @@ const Header = (props) => {
             LOG OUT
           </button>
 
-          <button className={styles.cart}>
-            <Order cart={props.cart} />
-          </button>
+          <Link className={styles.cart} to='/cart'>
+            <Order />
+          </Link>
         </>
       ) : (
         <>

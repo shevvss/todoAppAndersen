@@ -5,10 +5,10 @@ import Homepage from './Components/Homepage/Homepage';
 import Items from './Components/Items/Items';
 import Header from './Components/Header/Header';
 import './StylesApp.module.css';
+import Cart from './Components/Cart/Cart';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [cart, setCart] = useState([]);
 
   const logOut = () => {
     setLoggedIn(false);
@@ -16,14 +16,6 @@ function App() {
 
   const logIn = () => {
     setLoggedIn(true);
-  };
-
-  const addItemToCart = (item, count = 1) => {
-    let items = [];
-    for (let i = 0; i < count; i++) {
-      items.push(item);
-    }
-    setCart([...cart, ...items]);
   };
 
   // const removeItemFromCart = (item) => {
@@ -39,19 +31,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header cart={cart} loggedIn={loggedIn} logOut={logOut} logIn={logIn} />
+        <Header loggedIn={loggedIn} logOut={logOut} logIn={logIn} />
         <Routes>
-          <Route
-            path='/index'
-            element={
-              <Homepage loggedIn={loggedIn} addItemToCart={addItemToCart} />
-            }
-          />
+          <Route path='/index' element={<Homepage loggedIn={loggedIn} />} />
           <Route path='/aboutstore' element={<AboutStore />} />
-          <Route
-            path='/descriptionitem/:id'
-            element={<Items addItemToCart={addItemToCart} />}
-          />
+          <Route path='/descriptionitem/:id' element={<Items />} />
+          <Route path='/cart' element={<Cart />} />
           <Route
             path='*'
             element={

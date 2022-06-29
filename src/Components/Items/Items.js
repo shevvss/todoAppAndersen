@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from './StylesItems.module.css';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const Items = ({ addItemToCart, removeItemFromCart }) => {
+const Items = () => {
+  const dispatch = useDispatch();
+
+  const addItem = (item, countItem) => {
+    dispatch({ type: 'addItem', payload: { item: item, count: countItem } });
+  };
+
   const [item, setItem] = useState({});
   const { id } = useParams();
 
@@ -43,7 +50,7 @@ const Items = ({ addItemToCart, removeItemFromCart }) => {
             <button onClick={incCount}>+</button>
             <button
               onClick={() => {
-                addItemToCart(item, countItem);
+                addItem(item, countItem);
               }}
             >
               Add to cart: {countItem}
