@@ -5,7 +5,6 @@ import Basket from './basket.svg';
 
 const Order = () => {
   const cart = useSelector(getCart);
-  console.log(cart);
   return (
     <div>
       <img src={Basket} style={{ width: '14px' }} alt='close' />

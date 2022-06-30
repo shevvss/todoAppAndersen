@@ -3,10 +3,13 @@ import styles from './StylesHomepage.module.css';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../store/cartSlice';
+import { useSelector } from 'react-redux';
+import { getUser } from '../../store/selectors';
 
-const Homepage = ({ loggedIn }) => {
+const Homepage = () => {
   const [items, setItems] = useState([]);
   const dispatch = useDispatch();
+  const user = useSelector(getUser);
 
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products?offset=10&limit=10')
@@ -36,7 +39,7 @@ const Homepage = ({ loggedIn }) => {
                 </Link>
                 <div className={styles.price}>{item.price}$</div>
 
-                {loggedIn ? (
+                {user ? (
                   <>
                     <button
                       className={styles.bttn}

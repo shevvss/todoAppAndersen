@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AboutStore from './Components/AboutStore/AboutStore';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from './Components/Homepage/Homepage';
@@ -10,23 +10,13 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
-
-  const logOut = () => {
-    setLoggedIn(false);
-  };
-
-  const logIn = () => {
-    setLoggedIn(true);
-  };
-
   return (
     <>
       <BrowserRouter>
         <Provider store={store}>
-          <Header loggedIn={loggedIn} logOut={logOut} logIn={logIn} />
+          <Header />
           <Routes>
-            <Route path='/index' element={<Homepage loggedIn={loggedIn} />} />
+            <Route path='/index' element={<Homepage />} />
             <Route path='/aboutstore' element={<AboutStore />} />
             <Route path='/descriptionitem/:id' element={<Items />} />
             <Route path='/cart' element={<Cart />} />

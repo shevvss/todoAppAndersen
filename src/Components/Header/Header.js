@@ -4,11 +4,26 @@ import { Link } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import Form from '../../Form/Form';
 import Order from '../Order/Order';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getUser } from '../../store/selectors';
+import { logIn, logOut } from '../../store/userSlicer';
 
-const Header = (props) => {
+const Header = () => {
   const [modal, setModal] = useState(false);
 
   const ToggleModal = () => setModal(!modal);
+
+  const user = useSelector(getUser);
+  const dispatch = useDispatch();
+
+  const logInAction = () => {
+    dispatch(logIn());
+  };
+
+  const logOutAction = () => {
+    dispatch(logOut());
+  };
 
   return (
     <div className={styles.header}>
@@ -19,9 +34,14 @@ const Header = (props) => {
         About store
       </Link>
 
-      {props.loggedIn ? (
+      {user ? (
         <>
-          <button className={styles.btnLog} onClick={props.logOut}>
+          <button
+            className={styles.btnLog}
+            onClick={() => {
+              logOutAction();
+            }}
+          >
             LOG OUT
           </button>
 
@@ -40,7 +60,12 @@ const Header = (props) => {
             close={ToggleModal}
             title='LOGIN'
           >
-            <Form logIn={props.logIn} close={ToggleModal} />
+            <Form
+              logIn={() => {
+                logInAction();
+              }}
+              close={ToggleModal}
+            />
           </Modal>
         </>
       )}
