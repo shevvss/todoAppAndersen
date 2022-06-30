@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './StylesHomepage.module.css';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { addItem } from '../../store/cartSlice';
 
 const Homepage = ({ loggedIn }) => {
   const [items, setItems] = useState([]);
@@ -15,8 +16,8 @@ const Homepage = ({ loggedIn }) => {
       });
   }, []);
 
-  const addItem = (item) => {
-    dispatch({ type: 'addItem', payload: { item: item, count: 1 } });
+  const addItemAction = (item) => {
+    dispatch(addItem({ item: item, count: 1 }));
   };
 
   return (
@@ -40,7 +41,7 @@ const Homepage = ({ loggedIn }) => {
                     <button
                       className={styles.bttn}
                       onClick={() => {
-                        addItem(item);
+                        addItemAction(item);
                       }}
                     >
                       Add to cart

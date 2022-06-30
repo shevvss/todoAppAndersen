@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styles from './StylesItems.module.css';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { addItem } from '../../store/cartSlice';
 
 const Items = () => {
   const dispatch = useDispatch();
 
-  const addItem = (item, countItem = 1) => {
-    dispatch({ type: 'addItem', payload: { item: item, count: countItem } });
+  const addItemAction = (item, countItem = 1) => {
+    dispatch(addItem({ item: item, count: countItem }));
   };
 
   const [item, setItem] = useState({});
@@ -50,7 +51,7 @@ const Items = () => {
             <button onClick={incCount}>+</button>
             <button
               onClick={() => {
-                addItem(item, countItem);
+                addItemAction(item, countItem);
               }}
             >
               Add to cart: {countItem}

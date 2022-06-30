@@ -2,12 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getCart } from '../../store/selectors';
 import { useDispatch } from 'react-redux';
+import { clearCart } from '../../store/cartSlice';
 
 const Cart = () => {
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
-  const clearCart = () => {
-    dispatch({ type: 'clearCart' });
+  const clearCartAction = () => {
+    dispatch(clearCart());
   };
 
   return (
@@ -45,7 +46,7 @@ const Cart = () => {
           0
         )}
       </h2>
-      <button onClick={clearCart}>Clear cart</button>
+      <button onClick={clearCartAction}>Clear cart</button>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import Header from './Components/Header/Header';
 import './StylesApp.module.css';
 import Cart from './Components/Cart/Cart';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './store';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
