@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../store/cartSlice';
 
-const Items = () => {
+const Item = () => {
   const dispatch = useDispatch();
 
   const addItemAction = (item, countItem = 1) => {
@@ -21,11 +21,12 @@ const Items = () => {
   };
 
   const decCount = () => {
-    if (countItem > 0) {
-      setCountItem(countItem - 1);
-    } else {
-      setCountItem(0);
-    }
+    // if (countItem > 0) {
+    //   setCountItem(countItem - 1);
+    // } else {
+    //   setCountItem(0);
+    // }
+    return countItem > 0 ? setCountItem(countItem - 1) : setCountItem(0);
   };
 
   useEffect(() => {
@@ -64,4 +65,4 @@ const Items = () => {
   );
 };
 
-export default Items;
+export default Item;

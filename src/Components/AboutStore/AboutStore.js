@@ -9,7 +9,7 @@ const AboutStore = () => {
 
       <h3>This is the best store ever! Created by shevvss</h3>
 
-      <Link className={styles.backLink} to='/index'>
+      <Link className={styles.backLink} to='/products'>
         Back
       </Link>
     </div>

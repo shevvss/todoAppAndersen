@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <Link className={styles.link + ' ' + styles.homepage} to='/index'>
+      <Link className={`${styles.link} ${styles.homepage}`} to='/products'>
         Homepage
       </Link>
       <Link className={styles.link} to='/aboutstore'>

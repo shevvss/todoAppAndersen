@@ -2,7 +2,7 @@ import React from 'react';
 import AboutStore from './Components/AboutStore/AboutStore';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from './Components/Homepage/Homepage';
-import Items from './Components/Items/Items';
+import Item from './Components/Item/Item';
 import Header from './Components/Header/Header';
 import './StylesApp.module.css';
 import Cart from './Components/Cart/Cart';
@@ -11,27 +11,25 @@ import store from './store';
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Provider store={store}>
-          <Header />
-          <Routes>
-            <Route path='/index' element={<Homepage />} />
-            <Route path='/aboutstore' element={<AboutStore />} />
-            <Route path='/descriptionitem/:id' element={<Items />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route
-              path='*'
-              element={
-                <div>
-                  <h2>404 Page not found</h2>
-                </div>
-              }
-            />
-          </Routes>
-        </Provider>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Header />
+        <Routes>
+          <Route path='/products' element={<Homepage />} />
+          <Route path='/aboutstore' element={<AboutStore />} />
+          <Route path='/product/:id' element={<Item />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route
+            path='*'
+            element={
+              <div>
+                <h2>404 Page not found</h2>
+              </div>
+            }
+          />
+        </Routes>
+      </Provider>
+    </BrowserRouter>
   );
 }
 

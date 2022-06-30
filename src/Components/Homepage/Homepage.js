@@ -31,10 +31,7 @@ const Homepage = () => {
             <li className={styles.productItem} key={item.id}>
               <img className={styles.img} alt='#' src={item.images[0]} />
               <div className={styles.productList}>
-                <Link
-                  className={styles.title}
-                  to={`/descriptionitem/${item.id}`}
-                >
+                <Link className={styles.title} to={`/product/${item.id}`}>
                   <h3>{item.title}</h3>
                 </Link>
                 <div className={styles.price}>{item.price}$</div>
