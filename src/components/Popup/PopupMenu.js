@@ -1,16 +1,16 @@
 import ReactDOM from 'react-dom';
 import styles from './StylesPopup.module.css';
 
-const Popup = ({
+const PopupMenu = ({
   show,
   close,
   del,
   children,
-  completed,
-  favourite,
+  todo,
   handleComplete,
   handleFavourite,
 }) => {
+  const { completed, favourite } = todo;
   return ReactDOM.createPortal(
     <>
       {show && (
@@ -45,4 +45,4 @@ const Popup = ({
   );
 };
 
-export default Popup;
+export default PopupMenu;

@@ -15,13 +15,7 @@ const TodoList = () => {
   return (
     <ul>
       {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          id={todo.id}
-          title={todo.title}
-          completed={todo.completed}
-          favourite={todo.favourite}
-        />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
   );

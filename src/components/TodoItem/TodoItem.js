@@ -5,15 +5,17 @@ import {
   deleteTodo,
   toggleFavourite,
 } from '../../redux/todoSlice';
-import Popup from '../Popup/Popup';
+import PopupMenu from '../Popup/PopupMenu';
 import styles from './StyleItem.module.css';
 import Menu from '../../icons/menu.svg';
 import Star from '../../icons/star.svg';
 
-const TodoItem = ({ id, title, completed, favourite }) => {
+const TodoItem = ({ todo }) => {
+  const { id, title, completed, favourite } = todo;
   const [popup, setPopup] = useState(false);
 
   const ToggleModal = () => setPopup(!popup);
+
   const dispatch = useDispatch();
 
   const handleCompleteClick = () => {
@@ -51,12 +53,11 @@ const TodoItem = ({ id, title, completed, favourite }) => {
       <button onClick={() => ToggleModal()}>
         <img src={Menu} style={{ width: '14px' }} alt='#'></img>
       </button>
-      <Popup
+      <PopupMenu
         show={popup}
         del={handleDeleteClick}
         close={ToggleModal}
-        completed={completed}
-        favourite={favourite}
+        todo={todo}
         handleComplete={handleCompleteClick}
         handleFavourite={handleFavouriteClick}
       />
