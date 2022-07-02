@@ -22,6 +22,7 @@ const todoSlice = createSlice({
         id: Date.now(),
         title: action.payload.title,
         completed: false,
+        favourite: false,
       };
       state.push(newTodo);
     },

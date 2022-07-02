@@ -10,11 +10,14 @@ const AddTodoForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+
+    if (value.trim().length === 0) return;
     dispatch(
       addTodo({
         title: value,
       })
     );
+    setValue('');
   };
 
   return (

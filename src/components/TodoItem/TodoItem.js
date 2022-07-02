@@ -6,7 +6,7 @@ import {
   toggleFavourite,
 } from '../../redux/todoSlice';
 import Popup from '../Popup/Popup';
-import './StyleItem.module.css';
+import styles from './StyleItem.module.css';
 import Menu from '../../icons/menu.svg';
 import Star from '../../icons/star.svg';
 
@@ -18,21 +18,21 @@ const TodoItem = ({ id, title, completed, favourite }) => {
 
   const handleCompleteClick = () => {
     dispatch(toggleComplete({ id: id, completed: !completed }));
-    return popup ? setPopup(!popup) : setPopup(popup);
+    setPopup(false);
   };
 
   const handleFavouriteClick = () => {
     dispatch(toggleFavourite({ id: id, favourite: !favourite }));
-    return popup ? setPopup(!popup) : setPopup(popup);
+    setPopup(false);
   };
 
   const handleDeleteClick = () => {
     dispatch(deleteTodo({ id: id }));
-    ToggleModal();
+    setPopup(false);
   };
 
   return (
-    <li>
+    <li className={`${completed ? styles.completed : ''} `}>
       <span>
         <input
           type='checkbox'
@@ -42,11 +42,11 @@ const TodoItem = ({ id, title, completed, favourite }) => {
         &nbsp;
         {title}
       </span>
-      {favourite ? (
+      {favourite && (
         <button onClick={() => handleFavouriteClick()}>
           <img src={Star} style={{ width: '14px' }} alt='#'></img>
         </button>
-      ) : null}
+      )}
 
       <button onClick={() => ToggleModal()}>
         <img src={Menu} style={{ width: '14px' }} alt='#'></img>

@@ -13,7 +13,7 @@ const Popup = ({
 }) => {
   return ReactDOM.createPortal(
     <>
-      {show ? (
+      {show && (
         <div
           className={`${styles.modalContainer} ${styles.show}`}
           onClick={() => close()}
@@ -39,7 +39,7 @@ const Popup = ({
             <main className={styles.modal_content}>{children}</main>
           </div>
         </div>
-      ) : null}
+      )}
     </>,
     document.getElementById('modal')
   );

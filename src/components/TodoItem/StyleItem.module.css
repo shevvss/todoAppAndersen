@@ -7,3 +7,7 @@ li {
   border-radius: 4px;
   margin-bottom: 0.5rem;
 }
+
+li.completed {
+  background-color: #c5e0c7;
+}
