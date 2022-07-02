@@ -1,35 +1,21 @@
 import React from 'react';
-import AboutStore from './Components/AboutStore/AboutStore';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Homepage from './Components/Homepage/Homepage';
-import Item from './Components/Item/Item';
-import Header from './Components/Header/Header';
-import './StylesApp.module.css';
-import Cart from './Components/Cart/Cart';
+import AddTodoForm from './components/AddTodoForm/AddTodoForm';
+import TodoList from './components/TodoList/TodoList';
+import TotalCompleteItems from './components/TotalCompletetems/TotalCompletelItems';
+import store from './redux/store';
 import { Provider } from 'react-redux';
-import store from './store';
+import styles from './StylesApp.module.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <Header />
-        <Routes>
-          <Route path='/products' element={<Homepage />} />
-          <Route path='/aboutstore' element={<AboutStore />} />
-          <Route path='/product/:id' element={<Item />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route
-            path='*'
-            element={
-              <div>
-                <h2>404 Page not found</h2>
-              </div>
-            }
-          />
-        </Routes>
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <div className={styles.wrapper}>
+        <h1>My Todo List</h1>
+        <AddTodoForm />
+        <TodoList />
+        <TotalCompleteItems />
+      </div>
+    </Provider>
   );
 }
 

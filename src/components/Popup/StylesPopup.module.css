@@ -23,7 +23,7 @@
 
 .modalContainer .modal_header {
   position: relative;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
 }
 
 .modalContainer .modal_headerTitle {
@@ -46,7 +46,7 @@
 }
 
 .modalContainer .modal_content {
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
   padding: 2rem 0;
 }
 
