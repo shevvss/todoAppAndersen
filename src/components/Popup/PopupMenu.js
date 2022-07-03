@@ -1,16 +1,18 @@
 import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
+import PopupDelete from './PopupDelete';
 import styles from './StylesPopup.module.css';
+import PopupEdit from './PopupEdit';
 
-const PopupMenu = ({
-  show,
-  close,
-  del,
-  children,
-  todo,
-  handleComplete,
-  handleFavourite,
-}) => {
+const PopupMenu = ({ show, close, todo, handleComplete, handleFavourite }) => {
   const { completed, favourite } = todo;
+
+  const [popupDelete, setPopupDelete] = useState(false);
+  const [popupEdit, setPopupEdit] = useState(false);
+
+  const TogglePopupDelete = () => setPopupDelete(!popupDelete);
+  const TogglePopupEdit = () => setPopupEdit(!popupEdit);
+
   return ReactDOM.createPortal(
     <>
       {show && (
@@ -31,12 +33,18 @@ const PopupMenu = ({
               <button onClick={handleComplete}>Done</button>
             )}
 
-            <button>Edit</button>
-            <button onClick={del}>Delete</button>
+            <button onClick={() => TogglePopupEdit()}>Edit</button>
+            <button onClick={() => TogglePopupDelete()}>Delete</button>
+            <PopupEdit show={popupEdit} todo={todo} close={TogglePopupEdit} />
+            <PopupDelete
+              show={popupDelete}
+              todo={todo}
+              close={TogglePopupDelete}
+            />
+
             {/* <button className={styles.close} onClick={() => close()}>
               close
             </button> */}
-            <main className={styles.modal_content}>{children}</main>
           </div>
         </div>
       )}

@@ -12,6 +12,7 @@ const TodoList = () => {
   useEffect(() => {
     dispatch(getTodosAsync());
   }, [dispatch]);
+
   return (
     <ul>
       {todos.map((todo) => (

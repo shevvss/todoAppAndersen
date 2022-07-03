@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  toggleComplete,
-  deleteTodo,
-  toggleFavourite,
-} from '../../redux/todoSlice';
+import { toggleComplete, toggleFavourite } from '../../redux/todoSlice';
 import PopupMenu from '../Popup/PopupMenu';
 import styles from './StyleItem.module.css';
 import Menu from '../../icons/menu.svg';
@@ -12,25 +8,20 @@ import Star from '../../icons/star.svg';
 
 const TodoItem = ({ todo }) => {
   const { id, title, completed, favourite } = todo;
-  const [popup, setPopup] = useState(false);
+  const [popupMenu, setPopupMenu] = useState(false);
 
-  const ToggleModal = () => setPopup(!popup);
+  const TogglePopupMenu = () => setPopupMenu(!popupMenu);
 
   const dispatch = useDispatch();
 
   const handleCompleteClick = () => {
     dispatch(toggleComplete({ id: id, completed: !completed }));
-    setPopup(false);
+    setPopupMenu(false);
   };
 
   const handleFavouriteClick = () => {
     dispatch(toggleFavourite({ id: id, favourite: !favourite }));
-    setPopup(false);
-  };
-
-  const handleDeleteClick = () => {
-    dispatch(deleteTodo({ id: id }));
-    setPopup(false);
+    setPopupMenu(false);
   };
 
   return (
@@ -50,13 +41,12 @@ const TodoItem = ({ todo }) => {
         </button>
       )}
 
-      <button onClick={() => ToggleModal()}>
+      <button onClick={() => TogglePopupMenu()}>
         <img src={Menu} style={{ width: '14px' }} alt='#'></img>
       </button>
       <PopupMenu
-        show={popup}
-        del={handleDeleteClick}
-        close={ToggleModal}
+        show={popupMenu}
+        close={TogglePopupMenu}
         todo={todo}
         handleComplete={handleCompleteClick}
         handleFavourite={handleFavouriteClick}

@@ -12,11 +12,20 @@ const AddTodoForm = () => {
     event.preventDefault();
 
     if (value.trim().length === 0) return;
-    dispatch(
-      addTodo({
+    fetch('https://62bf3495be8ba3a10d65ed0b.mockapi.io/todos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
         title: value,
-      })
-    );
+        completed: false,
+        favourite: false,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => dispatch(addTodo(data)));
     setValue('');
   };
 

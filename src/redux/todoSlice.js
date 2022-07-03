@@ -13,18 +13,21 @@ export const getTodosAsync = createAsyncThunk(
   }
 );
 
+// export const deleteTodo  = id => dispatch => {
+// fetch(`https://62bf3495be8ba3a10d65ed0b.mockapi.io/todos/${payload.id}`, {
+//   method: "DELETE"
+// })
+//   .then(res => res.json())
+//   .then(),
+//   );
+// };
+
 const todoSlice = createSlice({
   name: 'todos',
   initialState: [],
   reducers: {
     addTodo: (state, action) => {
-      const newTodo = {
-        id: Date.now(),
-        title: action.payload.title,
-        completed: false,
-        favourite: false,
-      };
-      state.push(newTodo);
+      state.push(action.payload);
     },
     toggleComplete: (state, action) => {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
@@ -36,6 +39,10 @@ const todoSlice = createSlice({
     },
     deleteTodo: (state, action) => {
       return state.filter((todo) => todo.id !== action.payload.id);
+    },
+    editTodo: (state, action) => {
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].title = action.payload.title;
     },
   },
   extraReducers: {
@@ -49,7 +56,12 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, toggleComplete, deleteTodo, toggleFavourite } =
-  todoSlice.actions;
+export const {
+  addTodo,
+  toggleComplete,
+  deleteTodo,
+  toggleFavourite,
+  editTodo,
+} = todoSlice.actions;
 
 export default todoSlice.reducer;
