@@ -19,7 +19,7 @@ const PopupEdit = ({ show, close, todo }) => {
       },
       body: JSON.stringify({ title: title }),
     }).then(dispatch(editTodo({ id: todo.id, title: title })));
-    // close();
+    close();
   };
 
   return ReactDOM.createPortal(

@@ -11,6 +11,7 @@ const PopupDelete = ({ show, close, todo }) => {
       method: 'DELETE',
     }).then(dispatch(deleteTodo({ id: todo.id })));
   };
+
   return ReactDOM.createPortal(
     <>
       {show && (
@@ -19,9 +20,11 @@ const PopupDelete = ({ show, close, todo }) => {
           onClick={() => close()}
         >
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <button onClick={handleDeleteClick}>Delete</button>
+            Are you sure you want to delete?
+            <br /> <br />
+            <button onClick={handleDeleteClick}>Yes</button>
             <button className={styles.close} onClick={() => close()}>
-              close
+              Cancel
             </button>
           </div>
         </div>

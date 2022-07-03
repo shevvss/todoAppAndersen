@@ -6,20 +6,24 @@ import styles from './StyleItem.module.css';
 import Menu from '../../icons/menu.svg';
 import Star from '../../icons/star.svg';
 
-const TodoItem = ({ todo }) => {
+interface ITodoItemProps {
+  todo: { id: number; title: string; completed: boolean; favourite: boolean };
+}
+
+const TodoItem: React.FC<ITodoItemProps> = ({ todo }) => {
   const { id, title, completed, favourite } = todo;
-  const [popupMenu, setPopupMenu] = useState(false);
+  const [popupMenu, setPopupMenu] = useState<boolean>(false);
 
   const TogglePopupMenu = () => setPopupMenu(!popupMenu);
 
   const dispatch = useDispatch();
 
-  const handleCompleteClick = () => {
+  const handleCompleteClick = (): void => {
     dispatch(toggleComplete({ id: id, completed: !completed }));
     setPopupMenu(false);
   };
 
-  const handleFavouriteClick = () => {
+  const handleFavouriteClick = (): void => {
     dispatch(toggleFavourite({ id: id, favourite: !favourite }));
     setPopupMenu(false);
   };

@@ -10,7 +10,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className={styles.wrapper}>
-        <h1>My Todo List</h1>
+        <h1>My Todo List:</h1>
         <AddTodoForm />
         <TodoList />
         <TotalCompleteItems />
